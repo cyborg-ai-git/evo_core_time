@@ -1,0 +1,50 @@
+##========================================================================================================================================
+##   CyborgAI CC BY-NC-ND 4.0 Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International  https:#github.com/cyborg-ai-git
+##========================================================================================================================================
+[package]
+name = "evo_core_time_rust"
+version.workspace = true
+edition.workspace = true
+description = "evo_core_time_rust"
+readme = "README.md"
+license-file  = "LICENSE.txt"
+repository = "https://github.com/cyborg-ai-git/evo_core_id"
+homepage = "https://github.com/cyborg-ai-git"
+documentation = "https://github.com/cyborg-ai-git/evo_core_id"
+keywords = [ "framework", "simulations", "ai"]
+categories = [ "algorithms", "wasm", "games", "data-structures"]
+authors = ["CyborgAI <cyborgai.mail@gmail.com>"]
+#---------------------------------------------------------------------------------------------------------------------------------------
+#[lib]
+#name = "evo_core_id_rust"
+#crate-type = ["cdylib", "rlib"]
+#---------------------------------------------------------------------------------------------------------------------------------------
+[features]
+doc-uml = []
+#---------------------------------------------------------------------------------------------------------------------------------------
+[dependencies]
+log = { version = "0.4.27" }
+chrono = "0.4.41"
+# WASM-specific dependencies
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+log = { version = "0.4.27" }
+wasm-bindgen = { version = "0.2.100" }
+js-sys = { version = "0.3.77" }
+wasm-logger = { version = "0.2.0" }
+wasm-bindgen-futures = { version = "0.4.50" }
+#---------------------------------------------------------------------------------------------------------------------------------------
+[dependencies.evo_framework]
+version = "*"
+# <https://github.com/>
+git = "https://github.com/cyborg-ai-git/evo_framework.git"
+#package = "evo_framework"
+#tag = "v*"
+#---------------------------------------------------------------------------------------------------------------------------------------
+#from automation
+#---------------------------------------------------------------------------------------------------------------------------------------
+[target.'cfg(any(not(target_arch = "wasm32"), target_os = "wasi"))'.dev-dependencies]
+log = { version = "0.4.26" }
+env_logger = { version = "0.11.6" }
+criterion = { version = "0.5", features = ["html_reports"] }
+tokio = { version = "1.44.2", features = ["full"] }
+futures = "0.3.31"

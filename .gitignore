@@ -1,0 +1,6 @@
+*.assets*
+*.so
+*.onnx
++.ort
+target
+run_github_repository.sh
